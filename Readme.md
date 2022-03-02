@@ -6,6 +6,9 @@
 This data was gathered from the **PersonalityCafe forum**, which has a significant number of individuals, their MBTI personality types, and what they have posted. This dataset contains over 8600 rows of data, on each row is a person’s Type (This persons 4 letter MBTI code/type) and a section of each of the last 50 things they have posted (Each entry separated by "|||" (3 pipe characters)).
 >  [Kaggle Link](https://www.kaggle.com/datasnaek/mbti-type)
 
+## Presentation Video
+ [Video Link](https://www.youtube.com/watch?v=KpoiSrGyRzw&ab_channel=SashankKakaraparty) 
+
 ## Why this project makes sense?
 	•Meta programmers, which are habitual ways of inputting, sorting and filtering the information found in the world around us, are a vital factor in Neuro Linguistic Programming (NLP) .
 	•The Myers–Briggs Type Indicator (MBTI) is currently considered as one of the most popular and reliable methods.
