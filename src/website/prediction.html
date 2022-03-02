@@ -1,0 +1,816 @@
+<!doctype html>
+<html>
+   <style>
+      .boxes
+      {
+      border: 2px solid;
+      margin: 1rem;
+      -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      }
+      .item
+      {
+      border: 2px dodgerblue dotted;
+      margin: 20px;
+      padding: 1rem;
+      background: snow;
+      -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      }
+      .aligncenter, .fusion-aligncenter {
+      clear: both;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      }
+      .post-content img {
+      margin: 1em 0;
+      }
+      .table-of-content {
+      background: #FFF8E1;
+      color: #455a64;
+      padding: 10px 20px;
+      margin: 1rem 0;
+      border-radius: 3px;
+      -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      margin: 20px;
+      border: solid 1px;
+      }
+      .centerText
+      {
+      text-align: center;
+      }
+      .celebrities table td img{
+      width: 200px;
+      height: 200px;
+      display: inline;
+      }
+	  .celebrities {
+	  display: none;
+	  }
+	  
+      .celebrities table {
+      text-align: center;
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+      }
+      h1,h3, h2
+      {
+      text-align: center;
+      }
+      .card {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: auto;
+      -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      background-color: rgb(255, 255, 255);
+      padding: 0.8rem;
+      width: 40rem;
+      }
+      .rating-container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      padding: 0.4rem 0.8rem;
+      width: 100%;
+      }
+      .rating-text p {
+      color: rgba(0, 0, 16, 0.8);
+      font-size: 1.3rem;
+      padding: 0.3rem;
+      }
+      .rating {
+      background-color: rgba(0, 0, 16, 0.8);
+      padding: 0.4rem 0.4rem 0.1rem 0.4rem;
+      border-radius: 2.2rem;
+      }
+      svg {
+      fill: rgb(242, 242, 242);
+      height: 3.6rem;
+      width: 3.6rem;
+      margin: 0.2rem;
+      }
+      .rating-form-2 svg {
+      height: 3rem;
+      width: 3rem;
+      margin: 0.5rem;
+      }
+      #radios label {
+      position: relative;
+      }
+      input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      }
+      input[type="radio"] + svg {
+      -webkit-transition: all 0.2s;
+      transition: all 0.2s;
+      }
+      input + svg {
+      cursor: pointer;
+      }
+      input[class="super-happy"]:hover + svg,
+      input[class="super-happy"]:checked + svg,
+      input[class="super-happy"]:focus + svg {
+      fill: rgb(0, 109, 217);
+      }
+      input[class="happy"]:hover + svg,
+      input[class="happy"]:checked + svg,
+      input[class="happy"]:focus + svg {
+      fill: rgb(0, 204, 79);
+      }
+      input[class="neutral"]:hover + svg,
+      input[class="neutral"]:checked + svg,
+      input[class="neutral"]:focus + svg {
+      fill: rgb(232, 214, 0);
+      }
+      input[class="sad"]:hover + svg,
+      input[class="sad"]:checked + svg,
+      input[class="sad"]:focus + svg {
+      fill: rgb(229, 132, 0);
+      }
+      input[class="super-sad"]:hover + svg,
+      input[class="super-sad"]:checked + svg,
+      input[class="super-sad"]:focus + svg {
+      fill: rgb(239, 42, 16);
+      }
+      input#submitBtn {
+      border-radius: 30px;
+      margin: 8px;
+      }
+      .card-footer {
+      display: grid;
+      }
+      .chapter
+      {
+      margin: 20px;
+      -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 16, 0.19), 0 0.3rem 0.3rem rgba(0, 0, 16, 0.23);
+      background-color: rgb(255, 255, 255);
+      padding: 10px;
+      border: solid 1px;
+      }
+   </style>
+   <body>
+      <h1>MBTI TYPE PREDICTION </h1>
+      <h1><a href="{{link}}"> {{ prediction }}</a></h1>
+      <h1>Provide feeback for the prediction.</h1>
+      <div class="card">
+         <div id="B" class="rating-form" style="display:none;">Thank you! Your response has been submitted.</div>
+         <div class="rating-container" id="A">
+            <div class="rating-text">
+               <p>How did we perform?</p>
+            </div>
+            <div class="rating">
+               <form class="rating-form" onsubmit="return handle_form_submission()">
+                  <label for="super-happy">
+                     <input type="radio" name="rating" class="super-happy" id="super-happy" value="5" checked />
+                     <svg viewBox="0 0 24 24">
+                        <path d="M12,17.5C14.33,17.5 16.3,16.04 17.11,14H6.89C7.69,16.04 9.67,17.5 12,17.5M8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11M15.5,11A1.5,1.5 0 0,0 17,9.5A1.5,1.5 0 0,0 15.5,8A1.5,1.5 0 0,0 14,9.5A1.5,1.5 0 0,0 15.5,11M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+                     </svg>
+                  </label>
+                  <label for="happy">
+                     <input type="radio" name="rating" class="happy" id="happy" value="4"  />
+                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24">
+                        <path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8C16.3,8 17,8.7 17,9.5M12,17.23C10.25,17.23 8.71,16.5 7.81,15.42L9.23,14C9.68,14.72 10.75,15.23 12,15.23C13.25,15.23 14.32,14.72 14.77,14L16.19,15.42C15.29,16.5 13.75,17.23 12,17.23Z" />
+                     </svg>
+                  </label>
+                  <label for="neutral">
+                     <input type="radio" name="rating" class="neutral" id="neutral" value="3" />
+                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24">
+                        <path d="M8.5,11A1.5,1.5 0 0,1 7,9.5A1.5,1.5 0 0,1 8.5,8A1.5,1.5 0 0,1 10,9.5A1.5,1.5 0 0,1 8.5,11M15.5,11A1.5,1.5 0 0,1 14,9.5A1.5,1.5 0 0,1 15.5,8A1.5,1.5 0 0,1 17,9.5A1.5,1.5 0 0,1 15.5,11M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M9,14H15A1,1 0 0,1 16,15A1,1 0 0,1 15,16H9A1,1 0 0,1 8,15A1,1 0 0,1 9,14Z" />
+                     </svg>
+                  </label>
+                  <label for="sad">
+                     <input type="radio" name="rating" class="sad" id="sad" value="2" />
+                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewBox="0 0 24 24">
+                        <path d="M20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12M22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12M15.5,8C16.3,8 17,8.7 17,9.5C17,10.3 16.3,11 15.5,11C14.7,11 14,10.3 14,9.5C14,8.7 14.7,8 15.5,8M10,9.5C10,10.3 9.3,11 8.5,11C7.7,11 7,10.3 7,9.5C7,8.7 7.7,8 8.5,8C9.3,8 10,8.7 10,9.5M12,14C13.75,14 15.29,14.72 16.19,15.81L14.77,17.23C14.32,16.5 13.25,16 12,16C10.75,16 9.68,16.5 9.23,17.23L7.81,15.81C8.71,14.72 10.25,14 12,14Z" />
+                     </svg>
+                  </label>
+                  <label for="super-sad">
+                     <input type="radio" name="rating" class="super-sad" id="super-sad" value="1" />
+                     <svg viewBox="0 0 24 24">
+                        <path d="M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M16.18,7.76L15.12,8.82L14.06,7.76L13,8.82L14.06,9.88L13,10.94L14.06,12L15.12,10.94L16.18,12L17.24,10.94L16.18,9.88L17.24,8.82L16.18,7.76M7.82,12L8.88,10.94L9.94,12L11,10.94L9.94,9.88L11,8.82L9.94,7.76L8.88,8.82L7.82,7.76L6.76,8.82L7.82,9.88L6.76,10.94L7.82,12M12,14C9.67,14 7.69,15.46 6.89,17.5H17.11C16.31,15.46 14.33,14 12,14Z" />
+                     </svg>
+                  </label>
+                  <div class="card-footer">
+                     <button type="submit" style="display: contents;">
+                     <input id="submitBtn" form="rating-form" class="btn btn--radius-2 btn--blue-2" type="submit" value="Submit the feeback!">
+                     </submit>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <div class="chapter">
+         <div>
+            <h2 data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">What is MBTI?</h2>
+            <p class="centerText">The Myers-Briggs Type Indicator (MBTI) is a personality test developed by Isabel Briggs Myers and her mother Katherine Briggs based on Carl Jung’s theory of personality types.<br>
+               Four different scales determine which one of 16 personalities are you:
+            </p>
+            <ul>
+               <li><b>Extraversion (E) and Introversion (I)</b>. Extroverts are more action-oriented and feel energized after social interactions, whereas introverts are more thought-oriented and they “charge batteries” when they’re alone.</li>
+               <li><b>Sensing (S) and Intuition (N)</b>. This refers to the way we gather information from the world around us. Those who prefer sensing gather information from reality, facts and experience, while the ones who prefer intuition prefer impressions, possibilities, abstract thinking.</li>
+               <li><b>Thinking (T) and Feeling (F)</b>. After we gather data, we process them in two ways: thinking (logic-based) and feeling (emotion-based).</li>
+               <li><b>Judging (J) and Perceiving (P)</b>. This refers to our attitude toward an outside world. Judgers prefer structure and order, Perceivers prefer being flexible and spontaneous.</li>
+            </ul>
+            <p class="centerText">There are 16 personality types, let see how they function in a workplace, and what they can do to improve their productivity.</p>
+            <h2 data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated"><img class="aligncenter size-full wp-image-8565" src="./How to increase productivity based on your personality type – Clockify Blog_files/mbti-personality-chart-types-productivity.png" alt="mbti personality chart types productivity" width="700" height="828" srcset="https://clockify.me/blog/wp-content/uploads/2021/03/mbti-personality-chart-types-productivity-200x237.png 200w, https://clockify.me/blog/wp-content/uploads/2021/03/mbti-personality-chart-types-productivity-254x300.png 254w, https://clockify.me/blog/wp-content/uploads/2021/03/mbti-personality-chart-types-productivity-400x473.png 400w, https://clockify.me/blog/wp-content/uploads/2021/03/mbti-personality-chart-types-productivity-533x630.png 533w, https://clockify.me/blog/wp-content/uploads/2021/03/mbti-personality-chart-types-productivity-600x710.png 600w, https://clockify.me/blog/wp-content/uploads/2021/03/mbti-personality-chart-types-productivity.png 700w" sizes="(max-width: 700px) 100vw, 700px"></h2>
+         </div>
+         <div class="table-of-content">
+            <p class="centerText">What type of person are you?<br>
+            <h1><a href="{{link}}"> {{ prediction }}</a></h1>
+            If you don’t already know you can <a href="https://www.16personalities.com/free-personality-test" target="_blank" rel="noopener nofollow">take this test</a> to find out and then come back to hear 5 tips to increase productivity based on your personality type.
+            </p>
+            <p>Choose your personality type to learn some tips about how to increase your productivity:</p>
+            <p><b>Analysts:</b></p>
+            <ol>
+               <li><a href="#INTJ">INTJ-The Architect</a></li>
+               <li><a href="#INTP">INTP-The Logician</a></li>
+               <li><a href="#ENTJ">ENTJ-The Commander</a></li>
+               <li><a href="#ENTP">ENTP-The Debater</a></li>
+            </ol>
+            <p><b>Diplomats:</b></p>
+            <ol>
+               <li><a href="#INFJ">INFJ-The Advocate</a></li>
+               <li><a href="#INFP">INFP-The Mediator</a></li>
+               <li><a href="#ENFJ">ENFJ-The Protagonist</a></li>
+               <li><a href="#ENFP">ENFP-The Campaigner</a></li>
+            </ol>
+            <p><b>Sentinels:</b></p>
+            <ol>
+               <li><a href="#ISTJ">ISTJ-The Logistician</a></li>
+               <li><a href="#ISFJ">ISFJ-The Defender</a></li>
+               <li><a href="#ESTJ">ESTJ-The Executive</a></li>
+               <li><a href="#ESFJ">ESFJ-The Consul</a></li>
+            </ol>
+            <p><b>Explorers:</b></p>
+            <ol>
+               <li><a href="#ISTP">ISTP-The Virtuoso</a></li>
+               <li><a href="#ISFP">ISFP-The Adventurer</a></li>
+               <li><a href="#ESTP">ESTP-The Entrepreneur</a></li>
+               <li><a href="#ESFP">ESFP-The Entertainer</a></li>
+            </ol>
+         </div>
+         <div class="boxes" id="boxes">
+            <main id="carousel">
+               <div class="item" id="INTJ">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">INTJ-The Architect</h2>
+                  <p>An INTJ is a quick-witted, detached, and rational individual. They question everything and enjoy breaking the rules. They have an unquenchable thirst for knowledge, which often makes them academically oriented. Architects are intelligent, curious, and determined. They can also be arrogant, overly critical, and dismissive of emotions.</p>
+                  <p>INTJs think outside the box and thrive when working alone or in small groups, so they would excel in careers in project management, marketing strategy, or system engineering.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Architects have very high standards for themselves and they usually do their job the best they can, which makes them great employees. They like working independently and can’t stand being micromanaged and wasting their time in pointless meetings.<br>
+                     An Architect typically wouldn’t hold back from offering everyone (including their manager and boss) constructive criticism, which can backfire as not everyone is a fan of that.<br>
+                     Even though they prefer working alone, INTJs actually make very good managers as their priority is effectiveness and innovation and not just being in charge for the sake of it. They treat their subordinates as equals and give them freedom.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if INTJ-The Architect</h3>
+                  <ol>
+                     <li><b>Make to-do lists</b>. Architects are great at planning. It comes so easy and natural to them that I didn’t even include it on this list, since I’m sure they already do it.<br>
+                        However, they are a little less great at taking action. To-do lists let you plan your tasks, but they also force you to <i>do them </i>in order to cross them off.
+                     </li>
+                     <li><b>Break down bigger tasks into smaller chunks</b>. Big projects often seem overwhelming, especially when you’re a perfectionist. To avoid procrastination, break them down into smaller tasks that seem more doable.</li>
+                     <li><b>Remember the 5-minute rule</b>. Another trick for procrastination is to make a deal with yourself that you’ll do that one thing you dread <i>for only 5 minutes</i>. Realistically, you’ll end up doing it for more than 5 minutes, but it’s important to force yourself to start.</li>
+                     <li><b>Give yourself a deadline</b>. You function well in deadline-based environments; use it to your advantage. Plan out and give deadlines to all tasks, not just work-related ones (yes, especially those you don’t want to do).</li>
+                     <li><b>Create a routine that works well for you</b>. As an INTJ, you are not the type of person who’ll do something only because everyone else is doing it. You would benefit from having a routine, but only the well-thought-out one that makes sense to you.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Architects You May Know</h2>
+                     <table>
+                        <tr>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/analysts_INTJ_elon_musk.svg?v=5" alt="Elon Musk" /></td>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/analysts_INTJ_friedrich_nietzsche.svg?v=5" alt="16Personalities avatar for Friedrich Nietzsche" /></td>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/analysts_INTJ_michelle_obama.svg?v=5" alt="16Personalities avatar for Michelle Obama" /></td>
+                        </tr>
+                        <tr>
+                           <td>Elon Musk</td>
+                           <td>Friedrich Nietzsche</td>
+                           <td>Michelle Obama</td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="INTP">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">INTP-The Logician</h2>
+                  <p>An INTP is a logical, inventive, and creative individual who loves patterns and problem-solving. They are unconventional and don’t like rules. Logicians are also self-driven and have high standards for themselves. On the other hand, they are not very emotional and have a big fear of failure. They can be insensitive and aloof.<br>
+                     Since they like working by themselves and having freedom, corporate jobs usually aren’t the best option for them. They function better in smaller work environments or working alone – great options for them are laboratory research, data analyst, or a freelance copywriter.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Their analytical mind and a desire for intellectual stimulation make Logicians resourceful and hard-working employees if they are given good working conditions and enough freedom.<br>
+                     If you’re an INTP, you like coming up with ideas and concepts but handling the logistics is not your cup of tea, so being a manager may suit you. Your criticism is often very valuable as you’re great at noticing inconsistencies.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if INTP-The Logician</h3>
+                  <p>Logicians are usually procrastinators, which is their biggest obstacle to being productive. There are a few ways to combat procrastination:</p>
+                  <ol>
+                     <li><b>Do the hardest task first</b> or <i>eat the frog</i>, as some would say. Do it when your mind is still fresh and you have the mental energy to deal with it. The sense of accomplishment will follow you throughout the day and make you even more productive.</li>
+                     <li><b>Delegate</b>. Look at your to-do list. Is there anything you can delegate to someone else? If so, do it and make time for things that are more important to you.</li>
+                     <li><b>Have a good morning routine</b>. Doing the same (hopefully productive) things every morning will make your brain know you mean business and it will get you in the right mindset to work.</li>
+                     <li><b>Make work a game</b>Productivity doesn’t have to be boring, have fun with it. If you like video games, make challenges and set a reward system if you accomplish them, give yourself a limited time period to accomplish it, etc.</li>
+                     <li><b>Remember that completed is better than perfect</b>. Logicians are often perfectionists, which is one of the reasons for their procrastination. Try to remember that a finished task, although imperfect, is better than the one that isn’t even started yet.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Logician You May Know</h2>
+                     <table>
+                        <tr>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/analysts_INTP_bill_gates.svg?v=5" alt="Bill Gates" /></td>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/analysts_INTP_albert_einstein.svg?v=5" alt="16Personalities avatar for Albert Einstein"></td>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/analysts_INTP_kristen_stewart.svg?v=5" alt="  for  kristen_stewart" /></td>
+                        </tr>
+                        <tr>
+                           <td>Bill Gates</td>
+                           <td>Albert Einstein</td>
+                           <td>Kristen Stewart</td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="ENTJ">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ENTJ-The Commander</h2>
+                  <p>ENTJs are natural-born leaders, confident and charismatic, often found in the center of attention. They love challenges and they are very determined to accomplish them. They are strong-willed, energetic, and confident, but they are also stubborn, impatient, and can be arrogant. Handling emotions is not what they’re particularly good at.</p>
+                  <p>Their vision and drive make them great entrepreneurs, university professors, and lawyers.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>As their name says, Commanders function best in a position of power, for example in executive or managerial roles. Being a leader is natural to them so they often find subordinate positions challenging.<br>
+                     ENTJs are great communicators and very driven. They hold themselves to a high standard and appreciate constructive criticism: their goal is to do the job as efficiently as possible.<br>
+                     As a coworker, a Commander is very sociable and enjoys sharing ideas.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ENTJ-The Commander</h3>
+                  <p>Being productive typically isn’t a problem for ENTJs, but there’s always room for improvement. Here are a few things you could do:</p>
+                  <ol>
+                     <li><b>Track time</b>. Tracking time is the best way to see where your time goes and if there’s anything you can do to improve. There is a variety of time tracking apps available that are easy to use and won’t interrupt your workflow, like </li>
+                     <li><b>Find a routine</b>. Commanders often enjoy having a routine as it makes them more efficient and it helps them avoid decision fatigue. If you don’t have one, try it out!</li>
+                     <li><b>Find the right playlist</b>. It can get you in the right mindset better than anything else, it’s just up to you what genre you choose.</li>
+                     <li><b>Work smarter, not harder</b>. You are a hard-worker, but efficiency is your ultimate goal. When you find yourself working a lot but not accomplishing much, take a step back and try to work smarter instead of harder.</li>
+                     <li><b>Set both short-term and long-term goals</b>. You function best when you have the big picture in mind; after all, short-term goals are just steps to accomplish your long-term goals.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Commanders You May Know</h2>
+                     <table>
+                        <tr>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/analysts_ENTJ_steve_jobs.svg?v=5" alt="16Personalities avatar for Steve Jobs"></td>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/analysts_ENTJ_margaret_thatcher.svg?v=5" alt="16Personalities avatar for Margaret Thatcher"></td>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/analysts_ENTJ_jim_carrey.svg?v=5" alt="16Personalities avatar for Jim Carrey"></td>
+                        </tr>
+                        <tr>
+                           <td>Steve Jobs</td>
+                           <td>Margaret Thatcher</td>
+                           <td>Jim Carrey</td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="ENTP">
+                  <h2 id="ENTP-The-Debater" data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ENTP-The Debater</h2>
+                  <p>An ENTP is a sharp, honest, and independent individual. They always seek knowledge and love discussing ideas, sometimes playing the devil’s advocate. A Debater finds more satisfaction in debating than being liked – they often enjoy being underdogs. They are charismatic and great at brainstorming and communicating, which makes them a valuable addition to numerous work environments. However, they can also be too argumentative and insensitive.<br>
+                     ENTPs love problem-solving, but they don’t always enjoy being practical: they like discussing ideas and theories more. They make great entrepreneurs, lawyers, and psychologists. Their nightmare is doing a monotonous job.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Debaters strongly believe in meritocracy and can be a little utopist in that sense, as that’s not how it always is in many workplaces. They don’t mind challenging the ideas of their superiors and they aren’t fond of rules.<br>
+                     They accept criticism very well as long as it makes sense: they appreciate honesty and they want their work to be the best it can possibly be. They function well in manager positions and they give their subordinates freedom, as they love having freedom too.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ENTP-The Debater</h3>
+                  <ol>
+                     <li><b>Prioritize</b>. Divide your tasks by their importance and urgency (you can check out the Eisenhower matrix to help you with that). Do the important and urgent ones. What to do with the rest? Well, it brings us to our next point.</li>
+                     <li><b>Delegate and outsource what you can</b>. It will let you spend more time thinking about exciting ideas and new concepts.</li>
+                     <li><b>Set clear goals</b>. You are good at accomplishing goals that make sense to you and that you find value in. Make all your goals SMART: specific, measurable, attainable, relevant, timely.</li>
+                     <li><b>Take breaks</b>. Take time to clear your head: take a walk, clean, or take a nap. Your focus will be better and your mind will be fresher.</li>
+                     <li><b>Declutter</b>. You can sometimes find it difficult to focus: decluttering will help you function better, think better, and have fewer distractions.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Debaters You May Know</h2>
+                     <table>
+                        <tr>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/analysts_ENTP_mark_twain.svg?v=5" alt="16Personalities avatar for Mark Twain">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/analysts_ENTP_sarah_silverman.svg?v=5" alt="16Personalities avatar for Sarah Silverman">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/analysts_ENTP_thomas_edison.svg?v=5" alt="16Personalities avatar for Thomas Edison">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Mark Twain</td>
+                           <td>Sarah Silverman</td>
+                           <td>Thomas Edison</td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="INFJ">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">INFJ-The Advocate</h2>
+                  <p>INFJ is the rarest personality type.<br>
+                     They are creative, compassionate, and sensitive. They are especially sensitive to injustice and their purpose in life is often to help others. Advocates are usually insightful and altruistic, as well as perfectionistic. They often find it hard to open up.
+                  </p>
+                  <p>They thrive in careers in which they have the chance to connect and help people: teachers, psychologists, authors, and medical workers are some of the best career options for them.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Advocates’ work must align with their purpose and values; it also has to give them the freedom to be creative. If these criteria are met, they will excel in any workplace.<br>
+                     Hierarchies don’t matter to them, they see themselves as equal to everyone else. They often feel frustrated if they feel unheard and unappreciated by their colleagues. They are usually well-liked in their workplace because of their positive and cooperative nature, although as introverts, they like working alone.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if INFJ-The Advocate</h3>
+                  <ol>
+                     <li><b>Schedule your time</b>. Having a schedule will help you become more organized and ensure you have time for everything.</li>
+                     <li><b>Find a work-life balance</b>. Advocates are often prone to burnout and stress, so this is the key. You can’t pour from an empty cup: you need time to relax and recharge to be able to do your job well.</li>
+                     <li><b>Exercise</b>. Working out is good for both physical and mental health and it helps reduce stress. I’m not saying you must become a gym rat: any physical activity that gets your heart pumping will work just fine.</li>
+                     <li><b>Learn to say no</b>. Your time and energy are valuable and you need to realize that. Saying <i>yes</i> to everything is a sure way to burnout.</li>
+                     <li><b>Set reminders</b>. If you catch yourself forgetting little tasks like watering your plants or picking up the packages on time, set reminders.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Advocates You May Know</h2>
+                     <table>
+                        <tr>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_INFJ_mother_teresa.svg?v=5" alt="16Personalities avatar for Mother Teresa">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_INFJ_nelson_mandela.svg?v=5" alt="16Personalities avatar for Nelson Mandela">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_INFJ_martin_luther_king.svg?v=5" alt="16Personalities avatar for Martin Luther King">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Mother Teresa</td>
+                           <td>Nelson Mandela</td>
+                           <td>Martin Luther King</td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="INFP">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">INFP-The Mediator</h2>
+                  <p>An INFP is an open-minded, empathetic, and creative individual, with vibrant inner life and curiosity for the depths of human nature. Many writers and artists are INFPs. They thrive in an environment with a low-stress level, doing a job that gives them a sense of purpose.<br>
+                     Mediators want a job that will not only pay their bills but make them fulfilled. They don’t like to be involved in drama and they tend to avoid conflict. They can be overly idealistic and self-critical (and at the same time, very sensitive to constructive criticism).
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>INFPs don’t like hierarchies: in their ideal workplace, everyone is equal and everyone feels valued and comfortable to share their ideas. If a Mediator becomes a manager, they’re not likely to act like they’re in charge or micromanage: they treat their employees as human beings and they like to hear their input and opinions.<br>
+                     They also don’t like high-stress and bureaucratic work environments. They are dedicated and considerate. They like to be independent, but also appreciate having some structure.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if INFP-The Mediator</h3>
+                  <p>You have big ideas and ambitions, you just need to be a little more practical so you can achieve everything you’ve dreamed of.</p>
+                  <ol>
+                     <li><b>Make a strategy</b>. You probably already know what you want and what your goals are, but you need to make a step-by-step plan on how to get there so you can accomplish them easier.</li>
+                     <li><b>Make to-do lists</b>. It’s one of the most simple, yet most effective ways to stay organized and productive.</li>
+                     <li><b>Get rid of all distractions</b>. Phone notifications, talking, daydreaming, music: know what distracts you, and then take necessary steps to avoid it.</li>
+                     <li><b>Make your space clean and tidy</b>. Clean, decluttered space will make you think and function better. If you like your creative mess, just make sure it’s never out of control, as a cluttered space often brings additional stress.</li>
+                     <li><b>Work on being more open to criticism</b>. Try thinking of criticism as an opportunity to get better, not as an attack on you as a person or as someone thinking you’re bad at what you are doing. As an INFP myself, this is what I used to struggle with the most, but I got better as soon as I stopped taking it personally and started taking it as help it actually is.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Mediators You May Know</h2>
+                     <table>
+                        <tr>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_INFP_william_shakespeare.svg?v=5" alt="16Personalities avatar for William Shakespeare">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_INFP_julia_roberts.svg?v=5" alt="16Personalities avatar for Julia Roberts">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_INFP_johnny_depp.svg?v=5" alt="16Personalities avatar for Johnny Depp">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>William Shakespeare
+                           </td>
+                           <td>Julia Roberts
+                           </td>
+                           <td>Johnny Depp
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="ENFJ">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ENFJ-The Protagonist</h2>
+                  <p>An ENFJ is a passionate, altruistic, and eloquent individual. They like to inspire and work on improving both themselves and their community. Communication comes very naturally to them.&nbsp; They are tolerant, reliable, and natural leaders, but also overly idealistic and too sensitive. They can struggle with making hard decisions.</p>
+                  <p>Because of their natural inclination to inspire and help people, they thrive in career paths such as teaching, counseling, HR, and sales.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Protagonists are usually very likable and can function well in different roles. They are reliable and eager to help, but they need to be careful not to overwork themselves. Sometimes they accept extra work to avoid conflict and criticism.<br>
+                     They are cooperative and usually get along with their colleagues: they love working in an environment where everyone is comfortable expressing their ideas and thoughts.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ENFJ-The Protagonist</h3>
+                  <ol>
+                     <li><b>Prioritize</b>. Divide your tasks by their importance and urgency: do the important and urgent ones, delegate the ones that are urgent but can be done by someone else, and schedule important but not urgent ones.</li>
+                     <li><b>Learn to say no</b>. Your time and energy are valuable and you need to realize that. Saying <i>yes</i> to everything is a sure way to burnout.</li>
+                     <li><b>Organize your space</b>. Make your bed, organize your desk, wash the dishes. Cluttered space makes your mind cluttered too.</li>
+                     <li><b>Plan your day the night before</b>. In that way, when you wake up the next morning you’ll already know what to do and how to organize your day.</li>
+                     <li><b>Don’t overwork yourself</b>. Find a good work-life balance and make sure you give yourself time to relax and recharge. You won’t be productive if your mind is tired and can’t focus.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Protagonists You May Know</h2>
+                     <table>
+                        <tr>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_ENFJ_barack_obama.svg?v=5" alt="16Personalities avatar for Barack Obama">
+                           </td>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_ENFJ_oprah_winfrey.svg?v=5" alt="16Personalities avatar for Oprah Winfrey">
+                           </td>
+                           <td><img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_ENFJ_malala_yousafzai.svg?v=5" alt="16Personalities avatar for Malala Yousafzai">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Barack Obama
+                           </td>
+                           <td>Oprah Winfrey
+                           </td>
+                           <td>Malala Yousafzai
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="ENFP">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ENFP-The Campaigner</h2>
+                  <p>An ENFP is a charming, free-spirited, and energetic individual. They are curious and observant, and their openness and great communication skills help them always have a group of friends around them. Campaigners can be highly emotional, which is both good and bad, depending on the situation. They also tend to overthink and get stressed easily.<br>
+                     Because of all of this, Campaigners typically thrive in environments where they can work with people and/or network. They also like challenges and constantly developing and improving themselves.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>ENFPs don’t like strict rules and prefer exploring new alternatives; their growth-oriented mindset often impresses their superiors. They like brainstorming and listening to other people’s ideas as much as sharing their own. They love learning new things, but their interest can start fading as soon as they get a grip on it.<br>
+                     A Campaigner is a people person and their colleagues can become their friends too. As a manager, they take the role of a leader rather than a superior, working alongside their subordinates and inspiring and motivating them if necessary.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ENFP-The Campaigner</h3>
+                  <p>Your biggest challenge is staying focused. Here’s how you can improve your focus and, consequently, your productivity:</p>
+                  <ol>
+                     <li><b>Write to-do lists</b>. It’s best to write them the night before, so when you wake up you already know what you have to do and how your day is going to look like.</li>
+                     <li><b>Take regular breaks</b>. Your brain can’t stay focused forever, and when it gets tired it searches for distractions. Take short breaks every 45-60 minutes to keep your mind fresh.</li>
+                     <li><b>Eliminate distractions</b>. Speaking of distractions – be aware of what distracts you the most and make sure you get rid of it when you’re working.</li>
+                     <li><b>Live healthy </b>– regular sleep, exercise, and nutritious food (especially healthy fats and fruit and vegetables such as berries and broccoli) can significantly help your brain focus more easily.</li>
+                     <li><b>Batch similar tasks together</b>. When you switch to a task completely different from the one you were doing before, your brain has to adjust to a different way of thinking and loses some focus in the process. To minimize that, batch similar tasks together and do them one after another.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Campaigners You May Know</h2>
+                     <table>
+                        <tr>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_ENFP_robert_downey_jr.svg?v=5" alt="16Personalities avatar for Robert Downey, Jr.">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_ENFP_ellen_degeneres.svg?v=5" alt="16Personalities avatar for Ellen DeGeneres">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/diplomats_ENFP_will_smith.svg?v=5" alt="16Personalities avatar for Will Smith">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Robert Downey, Jr.
+                           </td>
+                           <td>Ellen DeGeneres
+                           </td>
+                           <td>Will Smith
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="ISTJ">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ISTJ-The Logistician</h2>
+                  <p>An ISTJ is a practical, logical, and dedicated individual. They take responsibility for their action and pride in the work they do. They prefer analyzing over making assumptions. Tradition, stability, and security are their main values. They are calm, strong-willed, and responsible, but they can also be judgemental and stubborn. Logisticians have strong opinions and aren’t afraid to share them.<br>
+                     Because of all of this, they would thrive in career paths like law, military, and police.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>ISTJs’ preferred work environment has clearly defined rules, structure, and hierarchy. They’re hard-working, dependable, and like having responsibilities, which makes them great employees. Logisticians function best when they work in peace, usually by themselves. No matter what task you give them, they’ll do their job seriously and responsibly. They are punctual and always respect deadlines. However, they can be sensitive to criticism.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to more productive if ISTJ-The Logistician</h3>
+                  <p>Logisticians are naturally very productive and rarely need additional motivation to get things done. You may not do your best if your work environment is too stressful, as you crave security and tranquility; in that case, these are the things you can do:</p>
+                  <ol>
+                     <li><b>Find the right playlist</b>. The one that’s calming, doesn’t distract you, and helps you stay productive.</li>
+                     <li><b>Have a neat, decluttered workspace</b>. Living in a mess can add even more stress.</li>
+                     <li><b>Work on adapting to changes</b>. Logisticians often don’t like changes very much, but they’re an unavoidable part of life. Try to remember that the only constant thing in life is change and try not stressing out about stressing out.</li>
+                     <li><b>Take meditation or mindfulness breaks</b>. Not only that they will help you stay focused, they will also keep you calm in a stressful work environment.</li>
+                     <li><b>Focus on 3 important things each day</b>. If you manage to do more than those 3 things, great! But if not, that’s okay: the priority is to do those top 3 tasks for each day.</li>
+                  </ol>
+               </div>
+               <div class="item" id="ISFJ">
+                  <h2 id="ISFJ-The-Defender" data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ISFJ-The Defender</h2>
+                  <p>ISFJs are very interesting individuals: social introverts, both conservative and open to new ideas, sensitive but analytical, reserved but good communicators. They are supportive, reliable, and patient. Defenders also tend to repress their feelings and take things too personally.</p>
+                  <p>They are creative and love to help people, so they would excel in positions such as counselors, technical support, nurses, teachers, or interior designers.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Defenders are reliable and dedicated employees whose ultimate goal is putting good service. They don’t mind working hard as long as they know they’re appreciated and valued. Having a supportive team and a positive work environment is incredibly important to this type of person.<br>
+                     As they’re always willing to help and avoid conflict, they need to be careful to not get used.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ISFJ-The Defender</h3>
+                  <ol>
+                     <li><b>Give yourself credit</b>, don’t downplay yourself and your accomplishments. Appreciating and respecting yourself will make others appreciate and respect you more. Not to mention their taps on the back will give you wind at the back and do your job even better.</li>
+                     <li><b>Don’t overload yourself, prioritize</b>. Every day, choose up to 3 top tasks that need to get done and focus on them. Others are just a bonus.</li>
+                     <li><b>Have a to-do list or checklist</b>. Defenders typically like structure so these types of lists help them stay on track, organized, and productive.</li>
+                     <li><b>Track your time</b>Tracking time is the best way to see where your time goes and if there’s anything you can do to improve.</li>
+                     <li><b>Take regular breaks</b>. Your brain can’t stay focused forever. Take time to clear your head: take a walk, clean, or take a nap.</li>
+                  </ol>
+               </div>
+               <div class="item" id="ESTJ">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ESTJ-The Executive</h2>
+                  <p>ESTJs are natural-born leaders and have a talent for bringing people together. They believe authority must be earned and that you should lead by example. Tradition, order, dignity, and honesty are what they value most. Many of the US presidents were this personality type. They are excellent organizers, strong-willed, and reliable. On the other hand, they can be judgemental, inflexible, and stubborn.</p>
+                  <p>They are loyal, so they like working for one employer as long as possible, preferably in a well-known, prominent organization. They would excel in careers in law, military, medicine, and politics.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Executives know what they bring to the table and expect the same in return. They have high standards for themselves, as well as for others. As they’re hard-working and self-motivated, they can do well in every position, but they prefer to be leaders. They like doing things by the book, but if a new method is proven to be better, they’ll do their best to adapt.<br>
+                     As coworkers, they’re friendly, down-to-earth, and enjoy networking.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ESTJ-The Executive</h3>
+                  <ol>
+                     <li>You may find it difficult to relax, so make sure you <b>have a good work-life balance</b>. It’s crucial for your mental health, but productivity as well.</li>
+                     <li><b>Organize your day the night before</b>. In that way, when you wake up you’ll know exactly what you have to do and how to organize your day.</li>
+                     <li><b>Minimize distractions</b>. Try to cancel the noise around you and put your phone on <i>do not disturb</i> to enter the deep work mode.</li>
+                     <li><b>Make to-do lists</b>. To-do lists are the simplest, yet most effective way to get more productive. They’re useful for one more reason: you can revise them from time to time and make sure you aren’t overworking yourself.</li>
+                  </ol>
+               </div>
+               <div class="item" id="ESFJ">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ESFJ-The Consul</h2>
+                  <p>An ESFJ is a people person, very sociable and altruistic. They are great at connecting with others and have a strong sense of duty and practical skills. They can also be vulnerable to criticism and inflexible.<br>
+                     As well-organized social butterflies, Consuls thrive in career paths like administration, social work, team management, and teaching.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>ENSJs are reliable and hard-working employees, especially if their work gives them a sense of purpose and their workplace has a clear hierarchy. They love working in a team, but they need their team to be as productive and competent as they are. They pay attention to details and they have great communication skills.<br>
+                     For them to thrive in a work environment, they need to be provided with clear expectations and to feel connected to their work.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ESFJ-The Consul</h3>
+                  <ol>
+                     <li><b>Plan your day the night before</b>. By writing your to-do lists the night before, you set yourself up for success: you wake up already knowing what you have to do and what’s your day going to look like.</li>
+                     <li><b>Set your priorities</b>. When you’re writing your to-do lists, choose up to 3 tasks you absolutely need to get done. These are your top priorities. If you manage to cross off other tasks from the list, great, but do them only after the top 3.</li>
+                     <li><b>Seek feedback</b>. It may or may not be scary, depending on the person, but will benefit you in many ways.</li>
+                     <li><b>Analyze how are you doing so far and where can you improve</b>. Other than seeking feedback, you can also analyze your own performance to figure out the areas you can work on.Time tracking is one of the ways to do so.</li>
+                     <li><b>Set deadlines for yourself</b>. You function well in deadline-based environments; use it to your advantage. Plan out and give deadlines to all tasks, not just work-related ones (yes, especially those you don’t want to do).</li>
+                  </ol>
+               </div>
+               <div class="item" id="ISTP">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ISTP-The Virtuoso</h2>
+                  <p>An ISTP is an individual who likes exploring and making things with their own two hands. They enjoy creating, improving themselves through experience and trial and error, as well as talking with others about their projects. Virtuosos are friendly (although usually private people) and like to offer a helping hand. They are optimistic, creative, and practical. They are also easily bored and they dislike commitment.</p>
+                  <p>As they’re skilled and love diversity &amp; problem-solving, they make great engineers, mechanics, and graphic designers. ISTPs are also great in crisis situations so they can excel as paramedics or firefighters.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>A Virtuoso’s ideal workplace is fun, exciting, and unpredictable. They don’t like strict rules and the inability to be creative. ISTPs prefer practical work over-analyzing and coming up with strategies. As managers, they don’t micromanage or set strict boundaries because they wouldn’t like to be treated like that themselves.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ISTP-The Virtuoso</h3>
+                  <ol>
+                     <li><b>Batch similar tasks together</b>. When you switch to a task completely different from the one you were doing before, your brain has to adjust to a different way of thinking and loses some focus in the process. To minimize that, batch similar tasks together and do them one after another.</li>
+                     <li><b>Communicate more effectively</b>. Listen actively, try to verbalize your thoughts as clearly as possible, and be aware of the importance of nonverbal communication (body language, tone of voice, facial expressions, etc).</li>
+                     <li><b>Choose one day for planning</b>. You probably don’t like planning, analyzing, and coming up with a strategy, but it’s often necessary. Choose one day every week or two to finish these tasks, so for the rest of the week, you can do something you like more.</li>
+                     <li><b>Delegate</b>. Look at your to-do list. Is there anything you can delegate to someone else? If so, do it and make time for things that are more important to you.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Virtuosos You May Know</h2>
+                     <table>
+                        <tr>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ISTP_olivia_wilde.svg?v=5" alt="16Personalities avatar for Olivia Wilde">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ISTP_michael_jordan.svg?v=5" alt="16Personalities avatar for Michael Jordan">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ISTP_bear_grylls.svg?v=5" alt="16Personalities avatar for Bear Grylls">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Olivia Wilde
+                           </td>
+                           <td>Michael Jordan
+                           </td>
+                           <td>Bear Grylls
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="ISFP">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ISFP-The Adventurer</h2>
+                  <p>An ISFP is an artistic, experimentative individual who enjoys challenging the status quo. They are risk-takers and pursuers of their passions. Adventurers don’t appreciate criticism.<br>
+                     Charming, independent, and curious, but also easily stressed and overly competitive are the characteristics of this personality type.
+                  </p>
+                  <p>Above all, ISFPs need creative freedom. That’s why they thrive in careers such as artists, musicians, designers, even working freelance.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Corporate environments are not for Adventurers: they don’t like rules and being micromanaged. They love working around people and are pleasant to be around but as introverts, positions that require heavy social interaction are not for them. They function better in deadline-based positions, where they can organize their time and have more freedom. Positive critiques and pats on the back go a long way for ISFPs and give them the motivation to work harder.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ISFP-The Adventurer</h3>
+                  <ol>
+                     <li><b>Set goals</b>. It’s important to set goals to make sure you’re going in the right direction. It’s easier to be productive when you know <i>why</i> you are doing it.</li>
+                     <li><b>Track time</b>. One of the benefits of tracking time is finding a good work-life balance and making sure you aren’t overworking.</li>
+                     <li><b>Have a specific day for planning</b>. Adventurers typically don’t like thinking long-term and planning, but it’s often necessary to do so. You can pick one day in a week for finishing all those unpleasant tasks so you don’t have to worry about it every day, but you’ll also get it done. Win-win.</li>
+                     <li><b>Take mindfulness or meditation breaks</b>. You can get stressed easily, so it’s a good idea to take regular breaks to relax and ease your mind.</li>
+                     <li><b>Break tasks into smaller chunks</b>. Big projects often seem overwhelming. To avoid procrastination, break them down into smaller tasks that seem more doable.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Adventurers You May Know</h2>
+                     <table>
+                        <tr>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ISFP_lana_del_rey.svg?v=5" alt="16Personalities avatar for Lana Del Rey">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ISFP_michael_jackson.svg?v=5" alt="16Personalities avatar for Michael Jackson">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ISFP_britney_spears.svg?v=5" alt="16Personalities avatar for Britney Spears">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              Lana Del Rey
+                           </td>
+                           <td>
+                              Michael Jackson
+                           </td>
+                           <td>
+                              Britney Spears
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="ESTP">
+                  <h2  data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ESTP-The Entrepreneur</h2>
+                  <p>An ESTP is the life of the party, energetic and sociable. They love drama and life’s pleasures: long theoretical discussions are not their cup of tea. They would rather live according to their moral compass than someone else’s. Entrepreneurs are observant, bold, rational, and practical. However, they can also be insensitive, impatient, and risk-prone.</p>
+                  <p>ESTPs are competitive people of action: they make great entrepreneurs (obviously), athletes, flight attendances, and chefs.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Entrepreneurs are generally very adaptable, but they prefer superior positions as they don’t like rules being forced upon them. ESTPs would rather experiment and see what works best than follow the guidelines made by someone else. They’re great at thinking quickly and improvising; they also don’t shy away from taking risks. “Work hard, play hard” is their motto.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ESTP-The Entrepreneur</h3>
+                  <ol>
+                     <li><b>Don’t multitask</b>. As irresistible as multitasking or jumping from task to task may be sometimes, try to finish them one by one. Multitasking will only disperse your focus and make you less productive.</li>
+                     <li><b>Cultivate deep work</b>. Deep work is not an easy skill to master, especially to ESTPs, but it’s often necessary to get things done.</li>
+                     <li><b>Block out time</b>. Schedule time for tasks on your calendar and treat them like important meetings: no procrastination, no interruptions.</li>
+                     <li><b>Use apps or a pre-organized planner</b>. You’re usually on the go and don’t particularly enjoy planning ahead, so it’s best for you to use something that has an already set template that you can just fill in.</li>
+                     <li><b>Try out different productivity methods</b>. Experimenting has always been what Entrepreneurs like doing the most, so why wouldn’t that work for productivity methods? Have fun with testing them and find out what works best for you.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Entrepreneurs You May Know</h2>
+                     <table>
+                        <tr>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ESTP_eddie_murphy.svg?v=5" alt="16Personalities avatar for Eddie Murphy">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ESTP_samuel_l_jackson.svg?v=5" alt="16Personalities avatar for Samuel L. Jackson">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ESTP_madonna.svg?v=5" alt="16Personalities avatar for Madonna">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Eddie Murphy
+                           </td>
+                           <td>Samuel L. Jackson
+                           </td>
+                           <td>Madonna
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+               <div class="item" id="ESFP">
+                  <h2 data-fontsize="32" style="--fontSize:32; line-height: 1.5;" data-lineheight="48px" class="fusion-responsive-typography-calculated">ESFP- The Entertainer</h2>
+                  <p>An ESFP lives in the moment and loves being in the spotlight. What else could you expect from a personality type called an Entertainer? They are social butterflies with an eye for aesthetics. Surprisingly to some, they are also very observant and willing to help others. On the other hand, ESFPs can be easily bored, conflict-averse, and too sensitive.</p>
+                  <p>Entertainers would thrive in careers such as event planners, tour guides, personal coaches, and – of course – some kind of entertainers.</p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">In a workplace</h3>
+                  <p>Entertainers don’t mind hectic, lively, and dynamic work environments – in fact, they prefer it. They enjoy working with people. Since they are good at reading people, as well as motivating them, they would be great managers or team leaders.<br>
+                     Mundane, monotonous tasks are not their cup of tea. They are good at providing honest feedback, but not so good at receiving it.
+                  </p>
+                  <h3 data-fontsize="26" style="--fontSize:26; line-height: 1.5; --minFontSize:26;" data-lineheight="39px" class="fusion-responsive-typography-calculated">How to be more productive if ESFP- The Entertainer</h3>
+                  <ol>
+                     <li><b>Schedule a day dedicated to planning</b>. Entertainers don’t really like planning, but it’s often necessary to do so. You can pick one day in a week for finishing all those unpleasant tasks so you don’t have to worry about it every day, but you’ll also get it done. Win-win.</li>
+                     <li><b>Do the hardest task first</b>. In the morning you have the most focus, so take advantage of that and do the hardest task you have within the first few hours of your workday.</li>
+                     <li><b>Batch similar tasks together</b> to avoid losing focus. Every time you switch from one task to another, different one, your brain needs some time to adjust to a different way of thinking. To avoid that, try doing batching similar tasks together.</li>
+                     <li><b>Don’t multitask</b>. Since you like variety, you may be tempted to multitask, but try avoiding it. Doing tasks one by one actually makes you much more efficient.</li>
+                     <li><b>Avoid </b><b>distractions</b>. Phone notifications, talking, daydreaming, music: know what distracts you, and then take necessary steps to avoid it. Try to cancel the noise around you and put your phone on <i>do not disturb</i> to enter the deep work mode.</li>
+                  </ol>
+                  <div class="celebrities">
+                     <h2>Entertainer You May Know</h2>
+                     <table>
+                        <tr>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ESFP_marilyn_monroe.svg?v=5" alt="16Personalities avatar for Marilyn Monroe">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ESFP_adele.svg?v=5" alt="16Personalities avatar for Adele">
+                           </td>
+                           <td>
+                              <img src="https://static.neris-assets.com/images/personality-types/famous/explorers_ESFP_steve_irwin.svg?v=5" alt="16Personalities avatar for Steve Irwin">
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>Marilyn Monroe
+                           </td>
+                           <td>Adele
+                           </td>
+                           <td>Steve Irwin
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+               </div>
+         </div>
+         </main>
+      </div>
+      </div>
+   </body>
+   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+   <script>
+      function handle_form_submission()
+      {
+        alert('Thank you for the feeback!');
+        document.getElementById("A").style.display = "none";
+        document.getElementById("B").style.display = "block";
+        return false; //do not submit the form
+      }
+   </script>
+</html>
